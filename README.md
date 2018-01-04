@@ -1,5 +1,5 @@
 ### customise-terminal-notifier
-Script to setup terminal-notifier with a custom icon
+Script to setup terminal-notifier with a custom icon. This script pulls terminal-notifer from the github repo and works it's magic, just put a path to your icon file and a flag for your new app id. see below.
 
 ```
 usage: ${program} -i <file> -b <bundle_id>
