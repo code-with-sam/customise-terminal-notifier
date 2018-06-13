@@ -62,17 +62,17 @@ function make_icns {
 if [[ -z "${icon}" || -z "${id}" ]]; then usage && exit 1; fi
 
 # set variables
-tn_version='1.7.2' # freezing at this version since subsequent ones no longer provide an app bundle
+tn_version='2.0.0'
 tmp_dir="$(mktemp -d -t 'terminal-notifier')"
 app="${tmp_dir}/terminal-notifier-${tn_version}/terminal-notifier.app"
 
 # get terminal notifier
-curl --progress-bar --location "https://github.com/alloy/terminal-notifier/releases/download/${tn_version}/terminal-notifier-${tn_version}.zip" | ditto -xk - "${tmp_dir}"
+curl --progress-bar --location "https://github.com/julienXX/terminal-notifier/releases/download/${tn_version}/terminal-notifier-${tn_version}.zip" | ditto -xk - "${tmp_dir}"
 
 # set icon and bundle id
 [[ "${icon}" != *'.icns' ]] && icon=$(make_icns "${icon}") # convert icon, if not already 'icns'
 cp "${icon}" "${app}/Contents/Resources/Terminal.icns"
-sed -i '' "s/nl.superalloy.oss.terminal-notifier/${id}/" "${app}/Contents/Info.plist"
+sed -i '' "s/fr.julienxx.oss.terminal-notifier/${id}/" "${app}/Contents/Info.plist"
 
 # move it to the Desktop
 mv "${app}" "${HOME}/Desktop"
